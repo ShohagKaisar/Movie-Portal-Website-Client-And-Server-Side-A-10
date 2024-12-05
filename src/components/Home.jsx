@@ -1,13 +1,14 @@
-import { useLoaderData } from "react-router-dom";
+import { NavLink, useLoaderData } from "react-router-dom";
 import Cards from "./Cards/Cards";
 import 'animate.css';
 import Marquee from "react-fast-marquee";
 import VisionSection from "./VisionSection/VisionSection";
-import bg from "../assets/images/bg.jpg"
 
 const Home = () => {
 
   const datas = useLoaderData();
+  const sortedDatas = datas.sort((a,b)=>b.rating - a.rating)
+  const limitedDatas = sortedDatas.slice(0, 6);
 
   return (
     <div>
@@ -82,11 +83,12 @@ const Home = () => {
       <div className="text-center my-8 border-b-2 pb-8">
         <h1 className="text-5xl font-bold underline italic text-purple-800">Featured Movies</h1>
       </div>
-      <div id="card" className=" p-8 grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-4 mt-8">
+      <div id="card" className="p-8 grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-4 mt-8">
         {
-          datas.map(data => <Cards key={data.id} data={data}></Cards>)
+          limitedDatas.map(data => <Cards key={data.id} data={data}></Cards>)
         }
       </div>
+      <NavLink to={"/allmovies"}><h1 className="py-2 text-center text-3xl font-bold bg-purple-300 text-purple-800">See All Movies</h1></NavLink>
       <div className="p-4 border-2 my-4 shadow-xl">
         <div>
           <p className="text-center text-5xl font-semibold italic text-green-500 my-4">Movies Gallery</p>

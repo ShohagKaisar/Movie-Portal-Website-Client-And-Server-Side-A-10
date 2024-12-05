@@ -8,6 +8,7 @@ const Footer = () => {
           Movie Portal
         </p>
         <p>For Better Movie Experience !</p>
+        <p>Email: movieportal.hotmail.com</p>
         <p>All Right Reverved @ 2024</p>
       </aside>
       <nav>

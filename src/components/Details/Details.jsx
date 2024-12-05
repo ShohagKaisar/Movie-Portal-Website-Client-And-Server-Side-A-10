@@ -1,126 +1,56 @@
 import React, { useState } from "react";
+import Rating from "react-rating";
 import { useLoaderData, useParams } from "react-router-dom";
 
 const Details = () => {
   const items = useLoaderData();
-  const { id } = useParams();
-  const [showModal, setShowModal] = useState(false);
+  const { _id } = useParams();
 
-  const details = items.find(item => item.id === Number(id));
+  const details = items.find(item => item._id === _id);
 
-  const {
-    adventureTitle,
-    image,
-    categoryName,
-    shortDescription,
-    adventureCost,
-    location,
-    duration,
-    bookingAvailability,
-    adventureLevel,
-    maxGroupSize,
-    includedItems,
-    ecoFriendlyFeatures,
-    specialInstructions,
-  } = details;
+  const { poster, title, genre, duration, rating, summary, releaseYear } = details;
 
-  const handleExpertButtonClick = () => {
-    const currentTime = new Date();
-    const currentHour = currentTime.getHours();
-    const currentMinutes = currentTime.getMinutes();
-    const totalMinutes = currentHour * 60 + currentMinutes;
-
-    const startMinutes = 10 * 60;
-    const endMinutes = 20 * 60;
-
-    if (totalMinutes >= startMinutes && totalMinutes <= endMinutes) {
-      window.open("https://meet.google.com", "_blank");
-    } else {
-      setShowModal(true);
-    }
-  };
 
   return (
     <>
       <div className="hero bg-base-200">
-        <div className="hero-content flex-col lg:flex-row">
-          <img src={image} className="rounded-lg shadow-2xl" alt={adventureTitle} />
+        <div className="hero-content flex-col lg:flex-row w-3/4">
+          <img src={poster} className="rounded-lg shadow-2xl w-44" alt="" />
           <div>
-            <h1 className="text-5xl font-bold py-2">{adventureTitle}</h1>
+            <h1 className="text-4xl font-bold py-2">{title}</h1>
             <div>
               <p>
-                <span className="text-lg font-semibold">Category:</span> {categoryName}
+                <span className="text-lg font-semibold">Release Year:</span> {releaseYear}
               </p>
               <p>
-                <span className="text-lg font-semibold">Short Description:</span>{" "}
-                {shortDescription}
-              </p>
+                <span className="font-semibold">Genre:</span>{" "}
+                {genre.length > 0 ? genre.join(", ") : "No genres available"}
+                .</p>
               <p>
-                <span className="text-lg font-semibold">Adventure Cost:</span> {adventureCost} Taka
+                <span className="text-lg font-semibold">Duration:</span> {duration} min.
               </p>
-              <p>
-                <span className="text-lg font-semibold">Location:</span> {location}
+              <div className="flex gap-1 items-center"><span className="font-semibold">Rating:</span>
+                <p>
+                  <Rating
+                    readonly
+                    initialRating={rating}
+                    emptySymbol={<span className="text-gray-500 text-lg">☆</span>}
+                    fullSymbol={<span className="text-yellow-400 text-lg">★</span>}
+                  />
+                  <span className="ml-2 text-sm text-gray-300">({rating})</span>
+                </p></div>
+              <p className="my-2">
+                <span className="text-lg font-semibold">Summery:</span>{" "}
+                {summary}
               </p>
-              <p>
-                <span className="text-lg font-semibold">Duration:</span> {duration}
-              </p>
-              <p>
-                <span className="text-lg font-semibold">Booking:</span>{" "}
-                {bookingAvailability ? "Available" : "Not Available"}
-              </p>
-              <p>
-                <span className="text-lg font-semibold">Adventure Level:</span> {adventureLevel}
-              </p>
-              <p>
-                <span className="text-lg font-semibold">Max Group Member:</span> {maxGroupSize}
-              </p>
+              <div className="flex gap-4">
+                <button className="px-4 py-2 bg-red-300 rounded-lg hover:bg-red-800 hover:text-white">Delete Movie</button>
+                <button className="px-4 py-2 bg-green-300 rounded-lg hover:bg-green-800 hover:text-white">Add to Favorite</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="grid lg:grid-cols-3 grid-cols-1 bg-base-200 lg:place-items-center p-4 gap-6">
-        <div>
-          <p className="text-xl font-bold">Included Items</p>
-          {includedItems.map((item, i) => (
-            <p key={i}>* {item}</p>
-          ))}
-        </div>
-        <div>
-          <p className="text-xl font-bold">Eco Friendly Features</p>
-          {ecoFriendlyFeatures.map((item, i) => (
-            <p key={i}>* {item}</p>
-          ))}
-        </div>
-        <div>
-          <p className="text-xl font-bold">Special Instructions</p>
-          {specialInstructions.map((item, i) => (
-            <p key={i}>* {item}</p>
-          ))}
-        </div>
-      </div>
-      <button
-        className="text-lg w-full btn btn-primary"
-        onClick={handleExpertButtonClick}
-      >
-        Talk With Experts
-      </button>
-      {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold">Consultation Time</h2>
-            <p className="mt-4">
-              Our experts are available for consultation between 10:00 AM and 8:00 PM.
-              Please contact us during this time.
-            </p>
-            <button
-              className="mt-4 btn btn-secondary"
-              onClick={() => setShowModal(false)}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
     </>
   );
 };

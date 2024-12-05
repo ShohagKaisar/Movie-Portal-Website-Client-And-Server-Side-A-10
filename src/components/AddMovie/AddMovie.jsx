@@ -11,7 +11,6 @@ const AddMovie = () => {
 
   const handleRating = (rate) => {
     setRating(rate);
-    console.log(rating);
   };
 
   const { user } = useContext(AuthContext);
@@ -38,8 +37,7 @@ const AddMovie = () => {
     const summary = form.summary.value;
     const releaseYear = form.releaseYear.value;
 
-    console.log(user, poster, title, genre, duration, rating, summary);
-    const newUser = { email, poster, title, genre, duration, rating, summary }
+    const newUser = { email, poster, title, genre, duration, rating, summary, releaseYear }
 
     if (!poster || !poster.startsWith("http")) {
       toast.error("Poster must be a valid URL.");
@@ -90,12 +88,9 @@ const AddMovie = () => {
         setGenre([]);
         setRating(0);
       })
-
-
     return true;
   };
 
-  console.log("Selected Genre:", genre);
   return (
     <div className="bg-gray-900 min-h-screen flex flex-col items-center py-12 text-white">
       <ToastContainer />
