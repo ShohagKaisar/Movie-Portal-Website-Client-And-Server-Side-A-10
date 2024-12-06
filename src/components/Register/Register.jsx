@@ -33,6 +33,7 @@ const Register = () => {
       setSuccess(true);
       setTimeout(()=>{
         navigate("/");
+        window.location.reload();
       },2000);
       // handleLogout();
     }).catch((error)=>{
@@ -42,10 +43,12 @@ const Register = () => {
   }
 
   const handleGoogleLoginSubmit = () => {
-    handleGoogleLogin()
-    setTimeout(()=>{
-      navigate("/")
-    },2000);
+    handleGoogleLogin().then(res=>{
+      setTimeout(()=>{
+        window.location.reload();
+        navigate("/")
+      },2000);
+    })
   }
 
   return (

@@ -42,7 +42,8 @@ const Router = createBrowserRouter([
         path: "/myfavorites",
         element: <PrivateRoute>
           <MyFavorites></MyFavorites>
-        </PrivateRoute>
+        </PrivateRoute>,
+        loader: () => fetch("http://localhost:5000/favorite")
       },
       {
         path: "/details/:_id",

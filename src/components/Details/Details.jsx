@@ -1,14 +1,78 @@
-import React, { useState } from "react";
+import { useContext } from "react";
 import Rating from "react-rating";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import Swal from 'sweetalert2'
+import { AuthContext } from "../AuthProvider/AuthProvider";
+
 
 const Details = () => {
   const items = useLoaderData();
   const { _id } = useParams();
+  const navigate = useNavigate();
+  const {user} = useContext(AuthContext);
+  const email = user.email;
+  console.log(email);
 
   const details = items.find(item => item._id === _id);
 
   const { poster, title, genre, duration, rating, summary, releaseYear } = details;
+
+  const handleDelete = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/movies/${_id}`, {
+          method: 'DELETE'
+        })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Coffee has been deleted.",
+                icon: "success"
+              })
+            }
+            navigate("/allmovies");
+          })
+      }
+    });
+  }
+
+// Add to favorite function
+const handleFavorite = (details) => {
+  const { poster, title, genre, duration, rating, summary } = details;
+  const myFav = { email, poster, title, genre, duration, rating, summary };
+
+  console.log(myFav);
+
+  fetch(`http://localhost:5000/favorite`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(myFav),
+  })
+    .then((res) => {
+        return res.json();
+      })
+    .then((data) => {
+      if (data?.insertedId) {
+        Swal.fire({
+          title: "Movie Added To Favorite Successfully!",
+          icon: "success",
+        });
+      }
+    })
+};
 
 
   return (
@@ -44,8 +108,8 @@ const Details = () => {
                 {summary}
               </p>
               <div className="flex gap-4">
-                <button className="px-4 py-2 bg-red-300 rounded-lg hover:bg-red-800 hover:text-white">Delete Movie</button>
-                <button className="px-4 py-2 bg-green-300 rounded-lg hover:bg-green-800 hover:text-white">Add to Favorite</button>
+                <button onClick={() => handleDelete(_id)} className="px-4 py-2 bg-red-300 rounded-lg hover:bg-red-800 hover:text-white">Delete Movie</button>
+                <button onClick={()=>handleFavorite(details)} className="px-4 py-2 bg-green-300 rounded-lg hover:bg-green-800 hover:text-white">Add to Favorite</button>
               </div>
             </div>
           </div>
