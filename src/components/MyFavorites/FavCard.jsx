@@ -1,10 +1,38 @@
 import Rating from "react-rating";
+import Swal from "sweetalert2";
 
 
 
 const FavCard = ({data}) => {
   const { _id, poster, title, genre, duration, rating, summary, releaseYear } = data;
-
+  const handleDelete = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/favorite/${_id}`, {
+          method: 'DELETE'
+        })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Coffee has been deleted.",
+                icon: "success"
+              })
+            }
+          })
+      }
+    });
+  }
 
   return (
     <div className="card card-compact bg-gradient-to-b from-violet-700 via-neutral-500 to-indigo-800 shadow-xl">
@@ -32,7 +60,7 @@ const FavCard = ({data}) => {
         <span className="ml-2 text-sm text-gray-300">({rating})</span>
       </p></div>
         <div className="card-actions justify-end">
-          <button className="hover:bg-green-500 px-4 py-2 text-gray-300 bg-slate-900 rounded-lg">Delete From Favorite</button>
+          <button onClick={() => handleDelete(_id)} className="hover:bg-green-500 px-4 py-2 text-gray-300 bg-slate-900 rounded-lg">Delete From Favorite</button>
         </div>
       </div>
     </div>
