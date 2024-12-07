@@ -10,12 +10,9 @@ const UpdateMovie = () => {
 
   const items = useLoaderData();
   const { _id } = useParams();
-  console.log(_id);
-
   const update = items.find(item => item._id === _id);
-
   const [rating, setRating] = useState(0);
-
+  
   const handleRating = (rate) => {
     setRating(rate);
   };
@@ -24,7 +21,7 @@ const UpdateMovie = () => {
   const { email } = user;
 
   const years = [2024, 2023, 2022, 2021, 2020];
-  const genres = ["Comedy", "Drama", "Horror", "Action", 'Suspense', 'npm install react-hook-form', "Romance", "Sci-Fi"];
+  const genres = ["Comedy", "Drama", "Horror", "Action", 'Suspense', 'Thriller', "Romance", "Sci-Fi"];
   const [genre, setGenre] = useState([]);
 
   const handleChange = ((e) => {
@@ -76,25 +73,25 @@ const UpdateMovie = () => {
       return;
     }
 
-    // fetch(`http://localhost:5000/movies`, {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json"
-    //   },
-    //   body: JSON.stringify(newUser)
-    // })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     if (data.insertedId) {
-    //       Swal.fire({
-    //         title: "Movie Added Successfully!",
-    //         icon: "success"
-    //       });
-    //     }
-    //     form.reset();
-    //     setGenre([]);
-    //     setRating(0);
-    //   })
+    fetch(`http://localhost:5000/movies/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(newUser)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Movie Updated Successfully!",
+            icon: "success"
+          });
+        }
+        form.reset();
+        setGenre([]);
+        setRating(0);
+      })
     return true;
   };
 
@@ -111,7 +108,7 @@ const UpdateMovie = () => {
         <div>
           <label className="block text-sm font-medium mb-2">Movie Poster URL</label>
           <input
-            value={update.poster}
+            defaultValue={update.poster}
             type="text"
             name="poster"
             placeholder="Enter poster URL"
@@ -123,7 +120,7 @@ const UpdateMovie = () => {
         <div>
           <label className="block text-sm font-medium mb-2">Movie Title</label>
           <input
-            value={update.title}
+            defaultValue={update.title}
             type="text"
             name="title"
             placeholder="Enter movie title"
@@ -152,7 +149,7 @@ const UpdateMovie = () => {
         <div>
           <label className="block text-sm font-medium mb-2">Duration (minutes)</label>
           <input
-            value={update.duration}
+            defaultValue={update.duration}
             type="number"
             name="duration"
             placeholder="Enter duration in minutes"
@@ -173,13 +170,13 @@ const UpdateMovie = () => {
         <div>
           <label className="block text-sm font-medium mb-2">Release Year</label>
           <select
-            value={update.releaseYear}
+            defaultValue={update.releaseYear}
             name="releaseYear"
             className="w-full p-2 rounded bg-gray-700 focus:outline-none"
           >
-            <option value="">Select Year</option>
+            <option defaultValue="">Select Year</option>
             {years.map((year) => (
-              <option key={year} value={year}>
+              <option key={year} defaultValue={year}>
                 {year}
               </option>
             ))}
@@ -190,7 +187,7 @@ const UpdateMovie = () => {
         <div>
           <label className="block text-sm font-medium mb-2">Summary</label>
           <textarea
-            value={update.summary}
+            defaultValue={update.summary}
             name="summary"
             placeholder="Enter a short summary"
             className="w-full p-2 rounded bg-gray-700 focus:outline-none"
@@ -202,7 +199,7 @@ const UpdateMovie = () => {
           type="submit"
           className="w-full py-2 bg-yellow-500 text-black font-medium rounded hover:bg-yellow-600 transition"
         >
-          Add Movie
+          Update Movie
         </button>
       </form>
     </div>
