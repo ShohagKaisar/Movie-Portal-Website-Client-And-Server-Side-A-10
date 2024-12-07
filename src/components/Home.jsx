@@ -1,32 +1,49 @@
-import React, { useState } from "react";
+
 import { NavLink, useLoaderData } from "react-router-dom";
 import Cards from "./Cards/Cards";
 import "animate.css";
 import Marquee from "react-fast-marquee";
 import VisionSection from "./VisionSection/VisionSection";
+import React from "react";
+
+import { IoMoon } from "react-icons/io5";
+import { IoSunny } from "react-icons/io5";
+
 
 const Home = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const datas = useLoaderData();
   const sortedDatas = datas.sort((a, b) => b.rating - a.rating);
   const limitedDatas = sortedDatas.slice(0, 6);
 
-  // Toggle theme function
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  // Theme Controll Function
+  const [dark, setDark] = React.useState(false);
+
+  const darkModeHandler = () => {
+    setDark(!dark);
+    document.body.classList.toggle("dark");
+  }
 
   return (
-    <div className={isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"}>
-      {/* Theme Toggle Button */}
-      <div className="flex justify-end p-4">
-        <button
-          onClick={toggleTheme}
-          className="btn btn-primary bg-purple-600 hover:bg-purple-800 text-white"
-        >
-          {isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-        </button>
+    <div className="bg-yellow-100 dark:bg-slate-800">
+
+      {/* Them Controller Button */}
+      <div className="text-fuchsia-400 justify-end flex gap-2 items-center pr-4">
+        <p>Change Theme:</p>
+      <button onClick={() => darkModeHandler()}>
+        <div className="text-yellow-600">
+          {
+
+            dark && <IoSunny />
+          }
+        </div>
+        <div>
+          {
+            !dark && <IoMoon />
+          }
+        </div>
+      </button>
       </div>
+
 
       <div className="carousel w-full">
         <div id="slide1" className="carousel-item relative w-full h-96">
