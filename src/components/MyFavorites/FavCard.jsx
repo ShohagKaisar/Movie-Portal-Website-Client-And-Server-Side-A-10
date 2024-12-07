@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import Rating from "react-rating";
 import Swal from "sweetalert2";
 
 
 
-const FavCard = ({data}) => {
-  const { _id, poster, title, genre, duration, rating, summary, releaseYear } = data;
+const FavCard = ({ data, favmovies, setFavmovies }) => {
+  const { _id, poster, title, genre, duration, rating, releaseYear } = data;
   const handleDelete = (_id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -30,6 +31,8 @@ const FavCard = ({data}) => {
               })
             }
           })
+        const remaining = favmovies.filter(favmovie => favmovie._id !== _id);
+        setFavmovies(remaining);
       }
     });
   }
