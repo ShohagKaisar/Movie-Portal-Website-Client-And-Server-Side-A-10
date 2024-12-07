@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Swal from 'sweetalert2'
 import { Rating } from "react-simple-star-rating";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 
 const UpdateMovie = () => {
 
@@ -12,7 +12,8 @@ const UpdateMovie = () => {
   const { _id } = useParams();
   const update = items.find(item => item._id === _id);
   const [rating, setRating] = useState(0);
-  
+  const navigate = useNavigate();
+
   const handleRating = (rate) => {
     setRating(rate);
   };
@@ -82,15 +83,11 @@ const UpdateMovie = () => {
     })
       .then(res => res.json())
       .then(data => {
-        if (data.insertedId) {
-          Swal.fire({
-            title: "Movie Updated Successfully!",
-            icon: "success"
-          });
-        }
-        form.reset();
-        setGenre([]);
-        setRating(0);
+        Swal.fire({
+          title: "Movie Updated Successfully!",
+          icon: "success"
+        });
+        navigate('/allmovies')
       })
     return true;
   };

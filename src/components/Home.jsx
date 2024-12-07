@@ -51,7 +51,7 @@ const Home = () => {
             className="hero"
             style={{
               backgroundImage:
-                "url(https://th.bing.com/th/id/OIP.cj4Um0XIsO3qjQPXNYUBDQHaEK?w=3840&h=2160&rs=1&pid=ImgDetMain)",
+                "url(https://img.lovepik.com/background/20211022/medium/lovepik-film-festival-movie-film-light-effect-background-image_605810486.jpg)",
             }}
           >
             <div className="hero-overlay bg-opacity-50"></div>
@@ -75,6 +75,72 @@ const Home = () => {
               ❮
             </a>
             <a href="#slide2" className="btn btn-circle">
+              ❯
+            </a>
+          </div>
+        </div>
+        <div id="slide2" className="carousel-item relative w-full h-96">
+          <div
+            className="hero"
+            style={{
+              backgroundImage:
+                "url(https://static.vecteezy.com/system/resources/thumbnails/014/000/181/small/red-stage-curtain-illuminated-by-spotlights-illustration-vector.jpg)",
+            }}
+          >
+            <div className="hero-overlay bg-opacity-50"></div>
+            <div className="hero-content text-neutral-content text-center">
+              <div>
+                <h1 className="mb-5 text-5xl font-bold animate__animated animate__bounce text-purple-500">
+                  Movie Portal
+                </h1>
+                <p className="mb-5 lg:px-40 md:px-20 px-14">
+                  "Discover Your Next Favorite Movie! 🌟 Explore top-rated films, watch trailers,
+                  and get personalized recommendations—all in one place!"
+                </p>
+                <a href="#card">
+                  <button className="btn btn-primary">Get Started</button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+            <a href="#slide1" className="btn btn-circle">
+              ❮
+            </a>
+            <a href="#slide3" className="btn btn-circle">
+              ❯
+            </a>
+          </div>
+        </div>
+        <div id="slide3" className="carousel-item relative w-full h-96">
+          <div
+            className="hero"
+            style={{
+              backgroundImage:
+                "url(https://img.freepik.com/free-photo/movie-background-collage_23-2149876023.jpg)",
+            }}
+          >
+            <div className="hero-overlay bg-opacity-50"></div>
+            <div className="hero-content text-neutral-content text-center">
+              <div>
+                <h1 className="mb-5 text-5xl font-bold animate__animated animate__bounce text-purple-500">
+                  Movie Portal
+                </h1>
+                <p className="mb-5 lg:px-40 md:px-20 px-14">
+                  "Discover Your Next Favorite Movie! 🌟 Explore top-rated films, watch trailers,
+                  and get personalized recommendations—all in one place!"
+                </p>
+                <a href="#card">
+                  <button className="btn btn-primary">Get Started</button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+            <a href="#slide2" className="btn btn-circle">
+              ❮
+            </a>
+            <a href="#slide1" className="btn btn-circle">
               ❯
             </a>
           </div>
