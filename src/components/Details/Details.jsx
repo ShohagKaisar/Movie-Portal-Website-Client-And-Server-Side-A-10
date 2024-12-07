@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Rating from "react-rating";
-import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useLoaderData, useNavigate, useParams } from "react-router-dom";
 import Swal from 'sweetalert2'
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
@@ -49,7 +49,7 @@ const Details = () => {
 
 // Add to favorite function
 const handleFavorite = (details) => {
-  const { poster, title, genre, duration, rating, summary } = details;
+  const { poster, title, genre, duration, rating, summary} = details;
   const myFav = { email, poster, title, genre, duration, rating, summary };
 
   console.log(myFav);
@@ -110,6 +110,7 @@ const handleFavorite = (details) => {
               <div className="flex gap-4">
                 <button onClick={() => handleDelete(_id)} className="px-4 py-2 bg-red-300 rounded-lg hover:bg-red-800 hover:text-white">Delete Movie</button>
                 <button onClick={()=>handleFavorite(details)} className="px-4 py-2 bg-green-300 rounded-lg hover:bg-green-800 hover:text-white">Add to Favorite</button>
+                <NavLink to={`/update/${_id}`}><button className="px-4 py-2 bg-green-300 rounded-lg hover:bg-green-800 hover:text-white">Update Movie</button></NavLink>
               </div>
             </div>
           </div>

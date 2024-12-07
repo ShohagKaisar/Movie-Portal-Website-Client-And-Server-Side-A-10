@@ -17,7 +17,7 @@ const AddMovie = () => {
   const { email } = user;
 
   const years = [2024, 2023, 2022, 2021, 2020];
-  const genres = ["Comedy", "Drama", "Horror", "Action", "Romance", "Sci-Fi"];
+  const genres = ["Comedy", "Drama", "Horror", "Action", 'Suspense', 'Thriller', "Romance", "Sci-Fi"];
   const [genre, setGenre] = useState([]);
 
   const handleChange = ((e) => {
