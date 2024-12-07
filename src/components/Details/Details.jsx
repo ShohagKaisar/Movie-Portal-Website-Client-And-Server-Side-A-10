@@ -11,7 +11,6 @@ const Details = () => {
   const navigate = useNavigate();
   const {user} = useContext(AuthContext);
   const email = user.email;
-  console.log(email);
 
   const details = items.find(item => item._id === _id);
 
@@ -110,7 +109,7 @@ const handleFavorite = (details) => {
               <div className="flex gap-4">
                 <button onClick={() => handleDelete(_id)} className="px-4 py-2 bg-red-300 rounded-lg hover:bg-red-800 hover:text-white">Delete Movie</button>
                 <button onClick={()=>handleFavorite(details)} className="px-4 py-2 bg-green-300 rounded-lg hover:bg-green-800 hover:text-white">Add to Favorite</button>
-                <NavLink to={`/update/${_id}`}><button className="px-4 py-2 bg-green-300 rounded-lg hover:bg-green-800 hover:text-white">Update Movie</button></NavLink>
+                <NavLink to={`/update/${_id}`}><button className="px-4 py-2 bg-yellow-300 rounded-lg hover:bg-yellow-800 hover:text-white">Update Movie</button></NavLink>
               </div>
             </div>
           </div>
