@@ -83,11 +83,13 @@ const UpdateMovie = () => {
     })
       .then(res => res.json())
       .then(data => {
-        Swal.fire({
-          title: "Movie Updated Successfully!",
-          icon: "success"
-        });
-        navigate('/allmovies')
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Movie Updated Successfully!",
+            icon: "success"
+          });
+          navigate('/allmovies')
+        }
       })
     return true;
   };
