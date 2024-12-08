@@ -17,7 +17,7 @@ const FavCard = ({ data, favmovies, setFavmovies }) => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/favorite/${_id}`, {
+        fetch(`https://movie-portal-server-alpha.vercel.app/favorite/${_id}`, {
           method: 'DELETE'
         })
           .then(res => res.json())
@@ -48,19 +48,19 @@ const FavCard = ({ data, favmovies, setFavmovies }) => {
         <p className="text-white">
           <span className="font-semibold">Genre:</span>{" "}
           {genre.length > 0 ? genre.join(", ") : "No genres available"}
-       .</p>
+          .</p>
         <p className="text-white"><span className="font-semibold">Duration:</span> {duration} min.</p>
         <p className="text-white"><span className="font-semibold">Release Year:</span> {releaseYear}</p>
         <div className="text-white flex gap-1 items-center"><span className="font-semibold">Rating:</span>
-        <p>
-        <Rating
-          readonly
-          initialRating={rating}
-          emptySymbol={<span className="text-gray-500 text-lg">☆</span>}
-          fullSymbol={<span className="text-yellow-400 text-lg">★</span>}
-        />
-        <span className="ml-2 text-sm text-gray-300">({rating})</span>
-      </p></div>
+          <p>
+            <Rating
+              readonly
+              initialRating={rating}
+              emptySymbol={<span className="text-gray-500 text-lg">☆</span>}
+              fullSymbol={<span className="text-yellow-400 text-lg">★</span>}
+            />
+            <span className="ml-2 text-sm text-gray-300">({rating})</span>
+          </p></div>
         <div className="card-actions justify-end">
           <button onClick={() => handleDelete(_id)} className="hover:bg-green-500 px-4 py-2 text-gray-300 bg-slate-900 rounded-lg">Delete From Favorite</button>
         </div>

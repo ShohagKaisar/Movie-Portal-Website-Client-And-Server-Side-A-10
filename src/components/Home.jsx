@@ -5,7 +5,6 @@ import "animate.css";
 import Marquee from "react-fast-marquee";
 import VisionSection from "./VisionSection/VisionSection";
 import React from "react";
-
 import { IoMoon } from "react-icons/io5";
 import { IoSunny } from "react-icons/io5";
 
@@ -29,21 +28,20 @@ const Home = () => {
       {/* Them Controller Button */}
       <div className="text-fuchsia-400 justify-end flex gap-2 items-center pr-4">
         <p>Change Theme:</p>
-      <button onClick={() => darkModeHandler()}>
-        <div className="text-yellow-600">
-          {
+        <button onClick={() => darkModeHandler()}>
+          <div className="text-yellow-600">
+            {
 
-            dark && <IoSunny />
-          }
-        </div>
-        <div>
-          {
-            !dark && <IoMoon />
-          }
-        </div>
-      </button>
+              dark && <IoSunny />
+            }
+          </div>
+          <div>
+            {
+              !dark && <IoMoon />
+            }
+          </div>
+        </button>
       </div>
-
 
       <div className="carousel w-full">
         <div id="slide1" className="carousel-item relative w-full h-96">

@@ -17,7 +17,7 @@ const AddMovie = () => {
   const { email } = user;
 
   const years = [2024, 2023, 2022, 2021, 2020];
-  const genres = ["Comedy", "Drama", "Horror", "Action", 'Suspense', 'npm install react-hook-form', "Romance", "Sci-Fi"];
+  const genres = ["Comedy", "Drama", "Horror", "Action", 'Suspense', 'Thriller', "Romance", "Sci-Fi"];
   const [genre, setGenre] = useState([]);
 
   const handleChange = ((e) => {
@@ -68,7 +68,7 @@ const AddMovie = () => {
       return;
     }
 
-    fetch(`http://localhost:5000/movies`, {
+    fetch(`https://movie-portal-server-alpha.vercel.app/movies`, {
       method: "POST",
       headers: {
         "content-type": "application/json"

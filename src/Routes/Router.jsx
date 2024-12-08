@@ -22,12 +22,12 @@ const Router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/movies")
+        loader: () => fetch("https://movie-portal-server-alpha.vercel.app/movies")
       },
       {
         path: "/allmovies",
         element: <AllMovies></AllMovies>,
-        loader: () => fetch("http://localhost:5000/movies")
+        loader: () => fetch("https://movie-portal-server-alpha.vercel.app/movies")
       },
       {
         path: "/aboutus",
@@ -44,21 +44,21 @@ const Router = createBrowserRouter([
         element: <PrivateRoute>
           <MyFavorites></MyFavorites>
         </PrivateRoute>,
-        loader: () => fetch("http://localhost:5000/favorite")
+        loader: () => fetch("https://movie-portal-server-alpha.vercel.app/favorite")
       },
       {
         path: "/details/:_id",
         element: <PrivateRoute>
           <Details></Details>
         </PrivateRoute>,
-        loader: () => fetch("http://localhost:5000/movies")
+        loader: () => fetch("https://movie-portal-server-alpha.vercel.app/movies")
       },
       {
         path: "/update/:_id",
         element: <PrivateRoute>
           <UpdateMovie></UpdateMovie>
         </PrivateRoute>,
-        loader: () => fetch("http://localhost:5000/movies")
+        loader: () => fetch("https://movie-portal-server-alpha.vercel.app/movies")
       },
       {
         path: "/login",

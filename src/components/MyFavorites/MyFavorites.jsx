@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import FavCard from "./FavCard";
 import { useContext, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";

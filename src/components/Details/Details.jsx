@@ -9,7 +9,7 @@ const Details = () => {
   const items = useLoaderData();
   const { _id } = useParams();
   const navigate = useNavigate();
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const email = user.email;
 
   const details = items.find(item => item._id === _id);
@@ -27,7 +27,7 @@ const Details = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/movies/${_id}`, {
+        fetch(`https://movie-portal-server-alpha.vercel.app/movies/${_id}`, {
           method: 'DELETE'
         })
           .then(res => res.json())
@@ -45,31 +45,31 @@ const Details = () => {
     });
   }
 
-// Add to favorite function
-const handleFavorite = (details) => {
-  const { poster, title, genre, duration, rating, summary} = details;
-  const myFav = { email, poster, title, genre, duration, rating, summary };
+  // Add to favorite function
+  const handleFavorite = (details) => {
+    const { poster, title, genre, duration, rating, summary } = details;
+    const myFav = { email, poster, title, genre, duration, rating, summary };
 
 
-  fetch(`http://localhost:5000/favorite`, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify(myFav),
-  })
-    .then((res) => {
+    fetch(`https://movie-portal-server-alpha.vercel.app/favorite`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(myFav),
+    })
+      .then((res) => {
         return res.json();
       })
-    .then((data) => {
-      if (data?.insertedId) {
-        Swal.fire({
-          title: "Movie Added To Favorite Successfully!",
-          icon: "success",
-        });
-      }
-    })
-};
+      .then((data) => {
+        if (data?.insertedId) {
+          Swal.fire({
+            title: "Movie Added To Favorite Successfully!",
+            icon: "success",
+          });
+        }
+      })
+  };
 
 
   return (
@@ -106,7 +106,7 @@ const handleFavorite = (details) => {
               </p>
               <div className="flex gap-4">
                 <button onClick={() => handleDelete(_id)} className="px-4 py-2 bg-red-300 rounded-lg hover:bg-red-800 hover:text-white">Delete Movie</button>
-                <button onClick={()=>handleFavorite(details)} className="px-4 py-2 bg-green-300 rounded-lg hover:bg-green-800 hover:text-white">Add to Favorite</button>
+                <button onClick={() => handleFavorite(details)} className="px-4 py-2 bg-green-300 rounded-lg hover:bg-green-800 hover:text-white">Add to Favorite</button>
                 <NavLink to={`/update/${_id}`}><button className="px-4 py-2 bg-yellow-300 rounded-lg hover:bg-yellow-800 hover:text-white">Update Movie</button></NavLink>
               </div>
             </div>

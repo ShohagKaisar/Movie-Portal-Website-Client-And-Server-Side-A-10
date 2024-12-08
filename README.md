@@ -3,7 +3,7 @@
 ---
 
 ## 🔗 **Live URL**
-[Live Project]()
+[Live Project](https://mshohagdev-movie-portal.netlify.app/)
 
 ---
 

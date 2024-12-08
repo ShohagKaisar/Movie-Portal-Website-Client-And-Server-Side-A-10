@@ -2,13 +2,11 @@
 import { useContext, useRef, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
-import { sendPasswordResetEmail } from 'firebase/auth';
-import auth from '../Firebase/Firebase.init';
 
 const Login = () => {
   const emailRef = useRef();
   const navigate = useNavigate();
-  const { handleLogin, handleGoogleLogin, setForgateEmail, forgateEmail } = useContext(AuthContext);
+  const { handleLogin, handleGoogleLogin, setForgateEmail } = useContext(AuthContext);
   const [loginError, SetLoginError] = useState(null);
 
   const handleForgate = () => {
