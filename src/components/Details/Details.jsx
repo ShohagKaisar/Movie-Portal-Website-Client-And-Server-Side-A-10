@@ -32,7 +32,6 @@ const Details = () => {
         })
           .then(res => res.json())
           .then(data => {
-            console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
@@ -51,7 +50,6 @@ const handleFavorite = (details) => {
   const { poster, title, genre, duration, rating, summary} = details;
   const myFav = { email, poster, title, genre, duration, rating, summary };
 
-  console.log(myFav);
 
   fetch(`http://localhost:5000/favorite`, {
     method: "POST",

@@ -27,7 +27,6 @@ const UpdateMovie = () => {
 
   const handleChange = ((e) => {
     const value = e.target.value;
-    console.log(value);
     setGenre([...genre, value])
   })
 
