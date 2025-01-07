@@ -121,7 +121,7 @@ const Home = () => {
       <div className="bg-gradient-to-bl from-[#5b3bf5] 0% to-[#f04343] 100% text-purple-900 text-center border-b-2 py-4">
         <h1 className="text-5xl font-bold underline italic text-purple-800">Featured Movies</h1>
       </div>
-      <div id="card" className="bg-gradient-to-bl from-[#5b3bf5] 0% to-[#f04343] 100% text-purple-900 p-8 grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-4">
+      <div id="card" className="bg-gradient-to-bl from-[#5b3bf5] 0% to-[#f04343] 100% text-purple-900 p-8 grid md:grid-cols-2 lg:grid-cols-4 grid-cols-1 gap-4">
         {limitedDatas.map((data) => (
           <Cards key={data.id} data={data}></Cards>
         ))}

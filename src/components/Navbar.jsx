@@ -63,16 +63,6 @@ const Navbar = () => {
             </ul>
           </div>
           <img src={logo} alt="" />
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            {
-              links
-            }
-          </ul>
-        </div>
-
-        <div className="navbar-end">
           {/* Them Controller Button */}
           <div className="text-fuchsia-400 justify-end flex gap-2 items-center pr-4">
             <button onClick={() => darkModeHandler()}>
@@ -89,6 +79,16 @@ const Navbar = () => {
               </div>
             </button>
           </div>
+        </div>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">
+            {
+              links
+            }
+          </ul>
+        </div>
+
+        <div className="navbar-end">
           {user && <abbr title={user.displayName}><img className="rounded-full my-2 mx-2 w-8 h-8" src={user.photoURL} alt="Images" /></abbr>}
           {
             user ? <NavLink to={"/"}><button onClick={handlrSignout} className="px-2 py-1 md:px-4 md:py-2 bg-red-500 text-white text-lg rounded-xl">Log Out</button></NavLink> : <div><NavLink to={"/register"}><button className="px-2 md:px-4 md:py-2 py-1 bg-yellow-500 text-white text-lg rounded-xl mx-2">Register</button>

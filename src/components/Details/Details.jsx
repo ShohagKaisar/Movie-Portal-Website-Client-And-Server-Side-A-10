@@ -10,7 +10,7 @@ const Details = () => {
   const { _id } = useParams();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  const email = user.email;
+  const email = user?.email;
 
   const details = items.find(item => item._id === _id);
 

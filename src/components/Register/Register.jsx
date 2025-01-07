@@ -49,7 +49,7 @@ const Register = () => {
   };
 
   return (
-    <div className="card bg-base-100 mx-auto w-full max-w-sm shrink-0 shadow-2xl">
+    <div className="-mt-8 card bg-base-100 mx-auto w-full max-w-sm shrink-0 shadow-2xl">
       <p className="text-4xl font-bold text-blue-600 text-center mt-4">Register Now</p>
       <form onSubmit={handleSubmit(handleRegisterSubmit)} className="card-body">
         <div className="form-control">
