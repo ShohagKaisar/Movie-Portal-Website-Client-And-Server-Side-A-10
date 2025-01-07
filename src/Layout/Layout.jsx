@@ -27,7 +27,7 @@ const Layout = () => {
   }, [location]);
 
   return (
-    <div className='container mx-auto px-2'>
+    <div className='bg-gradient-to-bl from-[#5b3bf5] 0% to-[#f04343] 100% mx-8 mt-32'>
       {/* Navbar Section */}
       <nav>
       <Navbar></Navbar>

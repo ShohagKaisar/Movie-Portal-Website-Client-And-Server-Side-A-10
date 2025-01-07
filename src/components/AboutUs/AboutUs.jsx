@@ -2,7 +2,7 @@
 
 const AboutUs = () => {
   return (
-    <div className="bg-gray-900 text-white min-h-screen flex flex-col items-center px-6 py-12">
+    <div className="bg-gradient-to-bl from-[#5b3bf5] 0% to-[#f04343] 100% -mt-8 text-white min-h-screen flex flex-col items-center px-6 py-12">
       <div className="max-w-4xl text-center">
         <h1 className="text-4xl font-bold mb-6">About Us</h1>
         <p className="text-lg leading-relaxed mb-8">

@@ -104,7 +104,7 @@ const Details = () => {
                 <span className="text-lg font-semibold">Summery:</span>{" "}
                 {summary}
               </p>
-              <div className="flex gap-4">
+              <div className="flex gap-4 text-black">
                 <button onClick={() => handleDelete(_id)} className="px-4 py-2 bg-red-300 rounded-lg hover:bg-red-800 hover:text-white">Delete Movie</button>
                 <button onClick={() => handleFavorite(details)} className="px-4 py-2 bg-green-300 rounded-lg hover:bg-green-800 hover:text-white">Add to Favorite</button>
                 <NavLink to={`/update/${_id}`}><button className="px-4 py-2 bg-yellow-300 rounded-lg hover:bg-yellow-800 hover:text-white">Update Movie</button></NavLink>

@@ -2,7 +2,7 @@
 
 const VisionSection = () => {
   return (
-    <div className="bg-gray-900 text-white py-16">
+    <div className="text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center">
@@ -29,8 +29,7 @@ const VisionSection = () => {
             </div>
             <h3 className="text-xl font-bold text-yellow-500">Seamless Streaming</h3>
             <p className="text-gray-300 mt-2">
-              Enjoy high-quality streaming of your favorite movies anytime,
-              anywhere.
+              Enjoy high-quality streaming of your favorite movies anytime.
             </p>
           </div>
 

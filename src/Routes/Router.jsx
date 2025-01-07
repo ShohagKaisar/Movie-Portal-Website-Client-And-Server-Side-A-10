@@ -12,6 +12,7 @@ import AddMovie from "../components/AddMovie/AddMovie";
 import MyFavorites from "../components/MyFavorites/MyFavorites";
 import AboutUs from "../components/AboutUs/AboutUs";
 import UpdateMovie from "../components/UpdateMovie/UpdateMovie";
+import ContactUs from "../components/ContactUs/ContactUs";
 
 
 const Router = createBrowserRouter([
@@ -23,6 +24,10 @@ const Router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
         loader: () => fetch("https://movie-portal-server-alpha.vercel.app/movies")
+      },
+      {
+        path: "/contact",
+        element: <ContactUs></ContactUs>,
       },
       {
         path: "/allmovies",

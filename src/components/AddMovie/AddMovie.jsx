@@ -91,12 +91,12 @@ const AddMovie = () => {
   };
 
   return (
-    <div className="bg-gray-900 min-h-screen flex flex-col items-center py-12 text-white">
+    <div className="bg-gradient-to-bl from-[#5b3bf5] 0% to-[#f04343] 100% text-white -mt-8 min-h-screen flex flex-col items-center py-12">
       <ToastContainer />
       <h1 className="text-3xl font-bold mb-6">Add a New Movie</h1>
       <form
         onSubmit={handleSubmit}
-        className="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg space-y-6"
+        className="bg-gradient-to-bl from-[#5b3bf5] 0% to-[#f04343] 100% text-white p-6 rounded-lg shadow-lg w-full max-w-lg space-y-6"
       >
         {/* Movie Poster */}
         <div>
@@ -105,7 +105,7 @@ const AddMovie = () => {
             type="text"
             name="poster"
             placeholder="Enter poster URL"
-            className="w-full p-2 rounded bg-gray-700 focus:outline-none"
+            className="w-full p-2 rounded bg-gradient-to-bl from-[#5b3bf5] 0% to-[#f04343] 100% text-white -mt-8 focus:outline-none"
           />
         </div>
 
@@ -116,7 +116,7 @@ const AddMovie = () => {
             type="text"
             name="title"
             placeholder="Enter movie title"
-            className="w-full p-2 rounded bg-gray-700 focus:outline-none"
+            className="w-full p-2 rounded bg-gradient-to-bl from-[#5b3bf5] 0% to-[#f04343] 100% text-white -mt-8 focus:outline-none"
           />
         </div>
 
@@ -127,7 +127,7 @@ const AddMovie = () => {
             name="genre"
             value={genre}
             onChange={handleChange}
-            className="w-full p-2 rounded bg-gray-700 focus:outline-none"
+            className="w-full p-2 rounded bg-gradient-to-bl from-[#5b3bf5] 0% to-[#f04343] 100% text-white -mt-8 focus:outline-none"
           >
             {genres.map((genre, index) => (
               <option key={index} value={genre}>
@@ -144,7 +144,7 @@ const AddMovie = () => {
             type="number"
             name="duration"
             placeholder="Enter duration in minutes"
-            className="w-full p-2 rounded bg-gray-700 focus:outline-none"
+            className="w-full p-2 rounded bg-gradient-to-bl from-[#5b3bf5] 0% to-[#f04343] 100% text-white -mt-8 focus:outline-none"
           />
         </div>
 
@@ -162,7 +162,7 @@ const AddMovie = () => {
           <label className="block text-sm font-medium mb-2">Release Year</label>
           <select
             name="releaseYear"
-            className="w-full p-2 rounded bg-gray-700 focus:outline-none"
+            className="w-full p-2 rounded bg-gradient-to-bl from-[#5b3bf5] 0% to-[#f04343] 100% text-white -mt-8 focus:outline-none"
           >
             <option value="">Select Year</option>
             {years.map((year) => (
@@ -179,7 +179,7 @@ const AddMovie = () => {
           <textarea
             name="summary"
             placeholder="Enter a short summary"
-            className="w-full p-2 rounded bg-gray-700 focus:outline-none"
+            className="w-full p-2 rounded bg-gradient-to-bl from-[#5b3bf5] 0% to-[#f04343] 100% text-white -mt-8 focus:outline-none"
           ></textarea>
         </div>
 

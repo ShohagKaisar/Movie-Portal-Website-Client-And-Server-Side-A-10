@@ -4,9 +4,7 @@ import Cards from "./Cards/Cards";
 import "animate.css";
 import Marquee from "react-fast-marquee";
 import VisionSection from "./VisionSection/VisionSection";
-import React from "react";
-import { IoMoon } from "react-icons/io5";
-import { IoSunny } from "react-icons/io5";
+import ContactUs from "./ContactUs/ContactUs";
 
 
 const Home = () => {
@@ -14,34 +12,8 @@ const Home = () => {
   const sortedDatas = datas.sort((a, b) => b.rating - a.rating);
   const limitedDatas = sortedDatas.slice(0, 6);
 
-  // Theme Controll Function
-  const [dark, setDark] = React.useState(false);
-
-  const darkModeHandler = () => {
-    setDark(!dark);
-    document.body.classList.toggle("dark");
-  }
-
   return (
-    <div className="bg-yellow-100 dark:bg-slate-800">
-
-      {/* Them Controller Button */}
-      <div className="text-fuchsia-400 justify-end flex gap-2 items-center pr-4">
-        <p>Change Theme:</p>
-        <button onClick={() => darkModeHandler()}>
-          <div className="text-yellow-600">
-            {
-
-              dark && <IoSunny />
-            }
-          </div>
-          <div>
-            {
-              !dark && <IoMoon />
-            }
-          </div>
-        </button>
-      </div>
+    <div className="dark:bg-slate-800 -mt-7">
 
       <div className="carousel w-full">
         <div id="slide1" className="carousel-item relative w-full h-96">
@@ -146,22 +118,22 @@ const Home = () => {
       </div>
 
       {/* Featured Movies */}
-      <div className="text-center my-8 border-b-2 pb-8">
+      <div className="bg-gradient-to-bl from-[#5b3bf5] 0% to-[#f04343] 100% text-purple-900 text-center border-b-2 py-4">
         <h1 className="text-5xl font-bold underline italic text-purple-800">Featured Movies</h1>
       </div>
-      <div id="card" className="p-8 grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-4 mt-8">
+      <div id="card" className="bg-gradient-to-bl from-[#5b3bf5] 0% to-[#f04343] 100% text-purple-900 p-8 grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-4">
         {limitedDatas.map((data) => (
           <Cards key={data.id} data={data}></Cards>
         ))}
       </div>
       <NavLink to={"/allmovies"}>
-        <h1 className="py-2 text-center text-3xl font-bold bg-purple-300 text-purple-800">
+        <h1 className="bg-gradient-to-bl from-[#5b3bf5] 0% to-[#f04343] 100% py-2 text-center text-3xl font-bold bg-purple-300 text-purple-800">
           See All Movies
         </h1>
       </NavLink>
 
       {/* Movies Gallery */}
-      <div className="p-4 border-2 my-4 shadow-xl">
+      <div className="bg-gradient-to-bl from-[#5b3bf5] 0% to-[#f04343] 100% text-purple-900 p-4 border-2 shadow-xl">
         <div>
           <p className="text-center text-5xl font-semibold italic text-green-500 my-4">
             Movies Gallery
@@ -180,10 +152,14 @@ const Home = () => {
       </div>
 
       {/* Vision Section */}
-      <div className="bg-gray-900 text-white py-16">
+      <div className="bg-gradient-to-bl from-[#5b3bf5] 0% to-[#f04343] 100% text-purple-900  py-4 mb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <VisionSection />
         </div>
+      </div>
+      {/* Contact Us Section */}
+      <div>
+        <ContactUs></ContactUs>
       </div>
     </div>
   );

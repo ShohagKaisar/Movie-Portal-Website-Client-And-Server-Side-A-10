@@ -1,12 +1,10 @@
-
+import logo from "../../assets/images/movie-portal-logo.png"
 
 const Footer = () => {
   return (
     <footer className="footer bg-neutral text-neutral-content p-10 mt-8">
       <aside>
-        <p className="text-4xl font-bold">
-          Movie Portal
-        </p>
+        <img src={logo} alt="" />
         <p>For Better Movie Experience !</p>
         <p>Email: movieportal.hotmail.com</p>
         <p>All Right Reverved @ 2024</p>

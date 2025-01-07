@@ -6,30 +6,59 @@ import { useState } from "react";
 const AllMovies = () => {
   const datas = useLoaderData();
   const [searchTerm, setSearchTerm] = useState("");
+  const [sortOrder, setSortOrder] = useState("desc"); // New state for sort order
 
+  // Filter the movies based on the search term
   const filteredMovies = datas.filter((movie) =>
     movie.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Sort movies by rating based on the selected sort order (ascending or descending)
+  const sortedMovies = filteredMovies.sort((a, b) => {
+    if (sortOrder === "asc") {
+      return a.rating - b.rating;
+    } else {
+      return b.rating - a.rating;
+    }
+  });
+
+  // Toggle the sort order between ascending and descending
+  const toggleSortOrder = () => {
+    setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
+  };
+
   return (
-    <>
+    <div className="-mt-8 pt-8">
       <h1 className="text-center text-4xl font-bold underline italic text-purple-800">
         All Movies
       </h1>
 
-      <div className="flex justify-center my-6 items-center gap-2"><p className="text-xl font-semibold">Search:</p> 
+      {/* Search input */}
+      <div className="flex justify-center my-6 items-center gap-2">
+        <p className="text-xl font-semibold">Search:</p>
         <input
           type="text"
           placeholder="Search movie....."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-1/2 p-2 rounded-md border-2 border-purple-500 focus:outline-none focus:border-purple-700"
+          className="bg-gradient-to-bl from-[#5b3bf5] 0% to-[#f04343] 100% text-purple-900 w-1/2 p-2 rounded-md border-2 border-purple-500 focus:outline-none focus:border-purple-700"
         />
       </div>
 
-      <div className="px-8 grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-4 mt-8">
-        {filteredMovies.length > 0 ? (
-          filteredMovies.map((data) => {
+      {/* Sort Button */}
+      <div className="flex justify-center my-6">
+        <button
+          onClick={toggleSortOrder}
+          className="px-4 py-2 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition"
+        >
+          Sort by Rating: {sortOrder === "asc" ? "Ascending" : "Descending"}
+        </button>
+      </div>
+
+      {/* Movie Cards */}
+      <div className="px-8 grid md:grid-cols-2 lg:grid-cols-4 grid-cols-1 gap-4 mt-8">
+        {sortedMovies.length > 0 ? (
+          sortedMovies.map((data) => {
             const { poster, title, genre, duration, releaseYear, rating, _id } = data;
             return (
               <div
@@ -85,7 +114,7 @@ const AllMovies = () => {
           </p>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
